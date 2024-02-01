@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "book_order")
 @Entity
+@EqualsAndHashCode
 public class Order {
 
     @Id
