@@ -2,9 +2,7 @@ package com.example.bookstore.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
-import java.util.List;
 
 @Getter
 @Setter
@@ -13,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "book_order")
 @Entity
-@EqualsAndHashCode
 public class Order {
 
     @Id

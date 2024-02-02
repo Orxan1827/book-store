@@ -2,7 +2,6 @@ package com.example.bookstore.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
 
 @Getter
@@ -22,4 +21,5 @@ public class Book {
     private String author;
     private BigDecimal price;
     private Integer stock;
+
 }

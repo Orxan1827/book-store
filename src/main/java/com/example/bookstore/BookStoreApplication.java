@@ -28,19 +28,19 @@ public class BookStoreApplication implements CommandLineRunner {
         Book book = Book.builder()
                 .name("Yuzuklerin efendisi")
                 .author("Tolkien")
-                .price(BigDecimal.valueOf(10))
+                .price(BigDecimal.valueOf(90))
                 .stock(10)
                 .build();
         Book book1 = Book.builder()
                 .name("Baliklar")
                 .author("Jon Waswing")
-                .price(BigDecimal.valueOf(13))
+                .price(BigDecimal.valueOf(120))
                 .stock(12)
                 .build();
         Book book2 = Book.builder()
                 .name("Cuma Pazari")
                 .author("Ahmet Bulut")
-                .price(BigDecimal.valueOf(15))
+                .price(BigDecimal.valueOf(100))
                 .stock(15)
                 .build();
         bookRepository.saveAll(Arrays.asList(book, book1, book2));

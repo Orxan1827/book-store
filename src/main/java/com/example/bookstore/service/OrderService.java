@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,13 +32,21 @@ public class OrderService {
                 .map(Book::getPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
+        BigDecimal newTotalPrice = null;
+        if (totalPrice.compareTo(BigDecimal.valueOf(200)) >= 0) {
+            newTotalPrice = addDiscount(totalPrice, BigDecimal.valueOf(80), BigDecimal.valueOf(100));
+        }
+
         Order order = Order.builder()
-                .totalPrice(totalPrice)
+                .totalPrice(newTotalPrice != null ? newTotalPrice : totalPrice)
                 .userName(bookOrderRequest.getUserName())
                 .build();
 
-        var savedOrder = orderRepository.save(order);
-        return orderMapper.mapOrderToResponse(savedOrder, bookOrderRequest.getBookIdList());
+        return orderMapper.mapOrderToResponse(orderRepository.save(order), bookOrderRequest.getBookIdList());
+    }
+
+    private BigDecimal addDiscount(BigDecimal totalPrice, BigDecimal calculationNum, BigDecimal calculationNum2) {
+        return totalPrice.multiply(calculationNum).divide(calculationNum2);
     }
 
 }
